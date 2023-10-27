@@ -1,0 +1,57 @@
+var vals = ['A','B','C','D'];
+
+function setup(){
+    createCanvas(400,400);
+}
+
+function draw(){
+    console.log(vals);
+    frameRate(2);
+    background(0);
+    textSize(64);
+    var s = '';
+    for (var i = 0; i < vals.length; i++) {
+      s += vals[i];
+    }
+    fill(255);
+    text(s, 20, height / 2);
+
+    //STEP1 
+    var largestI = -1;
+    for(var i = 0 ; i<vals.length;i++){
+        if (vals[i] < vals[i + 1]) {
+            largestI = i;
+          }
+    }
+    if(largestI == -1){
+        noLoop();
+        console.log("Finished")
+      }   
+//STEP2
+var largestJ = -1;
+  for (var j = 0; j < vals.length; j++) {
+    if (vals[largestI] < vals[j]) {
+      largestJ = j;
+    }
+  }
+
+  // STEP 3
+  swap(vals, largestI, largestJ);
+
+  //STEP4
+  var endArray = vals.splice(largestI + 1);
+  endArray.reverse();
+  vals = vals.concat(endArray);
+
+
+ 
+}
+
+
+
+
+function swap(arr, i, j) {
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
