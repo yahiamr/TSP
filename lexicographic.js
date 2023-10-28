@@ -1,20 +1,8 @@
-var vals = ['A','B','C','D'];
 
-function setup(){
-    createCanvas(400,400);
-}
 
-function draw(){
-    console.log(vals);
-    frameRate(2);
-    background(0);
-    textSize(64);
-    var s = '';
-    for (var i = 0; i < vals.length; i++) {
-      s += vals[i];
-    }
-    fill(255);
-    text(s, 20, height / 2);
+function lexicographic(vals){
+
+   
 
     //STEP1 
     var largestI = -1;
@@ -44,6 +32,8 @@ var largestJ = -1;
   vals = vals.concat(endArray);
 
 
+
+return vals
  
 }
 
