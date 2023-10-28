@@ -1,11 +1,13 @@
 
 var cities = [];
-var totalCities = 6;
+var totalCities = 5;
 
 var order = [];
-
 var recordDistance;
 var bestPath;
+
+var totalPermutations;
+var count = 0;
 
 function setup() {
     createCanvas(500, 600);
@@ -19,7 +21,8 @@ function setup() {
     var dist = calcDistance(cities,order);
     recordDistance = dist;
     bestPath = order.slice();
-
+    totalPermutations = factorial(totalCities);
+    
 }
 
 function draw() {
@@ -31,9 +34,20 @@ function draw() {
     translate(0,height/2);
     drawCurrentPath();
     checkDistance();
+    displayPercent();
    order =  lexicographic(order);
+  
 
 }
+
+function displayPercent(){
+    textSize(32);
+    fill(255);
+   var percent = 100 * (count / totalPermutations);
+   text(nf(percent, 0, 2) + '% completed', 20, height / 2 - 50);
+    count++;
+}
+
 
 function checkDistance() {
     var dist = calcDistance(cities, order);
@@ -95,3 +109,11 @@ function calcDistance(points, order) {
     }
     return sum;
 }
+
+function factorial(n) {
+    if (n == 1) {
+      return 1;
+    } else {
+      return n * factorial(n - 1);
+    }
+  }
