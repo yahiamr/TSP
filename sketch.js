@@ -30,8 +30,6 @@ function draw() {
     drawBestPath();
     translate(0,height/2);
     drawCurrentPath();
-    
-   // RandomizeCities();
     checkDistance();
    order =  lexicographic(order);
 
@@ -77,23 +75,12 @@ function drawCurrentPath() {
     endShape();
 }
 
-function RandomizeCities() {
-    var randI = floor(random(cities.length));
-    var randJ = floor(random(cities.length));
-    swap(cities, randI, randJ);
-}
 function writeText() {
     fill(255);
     noStroke();
     textSize(12);
     text(`Best: ${floor(recordDistance)}`, 340, 10);
 
-}
-
-function swap(arr, i, j) {
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
 }
 
 function calcDistance(points, order) {
