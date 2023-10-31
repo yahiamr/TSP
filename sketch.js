@@ -1,18 +1,28 @@
 var cities = [];
-var totalCities = 25;
+var totalCities =3;
 
 var popSize = 500;
 var population = [];
 var fitness = [];
+var order = [];
 
 var recordDistance = Infinity;
 var bestEver;
 var currentBest;
 
+let citySlider, cityLabel;
+let canvas;
+
 function setup() {
-  createCanvas(1000, 1000);
+  if (!canvas) {
+    canvas = createCanvas(1400, 1400);
+  } else {
+    canvas.remove();
+  }
+  citySlider = document.getElementById("citySlider");
+  cityLabel = document.getElementById("cityLabel");
+  totalCities = citySlider.value;
   // create random cities array
-  var order = [];
   for (var i = 0; i < totalCities; i++) {
     var point = createVector(random(width), random(height / 2));
     cities[i] = point;
@@ -83,4 +93,29 @@ function calcDistance(points, order) {
   }
   return sum;
 }
+function updateCities(value) {
+  noLoop();
+  cityLabel.innerText = "Number of cities: " + value;
+  totalCities = parseInt(value);
 
+  // Reset the cities, order, and population arrays and start over
+  cities = [];
+  order = [];
+  population = [];
+  recordDistance = Infinity;
+
+  for (var i = 0; i < totalCities; i++) {
+      var point = createVector(random(width), random(height / 2));
+      cities[i] = point;
+      order[i] = i;
+  }
+
+  for (var i = 0; i < popSize; i++) {
+      population[i] = shuffle(order);
+  }
+
+  // Optionally, reset the loop if you've stopped it earlier
+  // setup();
+  // redraw();
+  loop();
+}
