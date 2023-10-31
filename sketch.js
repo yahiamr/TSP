@@ -119,3 +119,6 @@ function updateCities(value) {
   // redraw();
   loop();
 }
+document.getElementById('citySlider').addEventListener('change', function() {
+  updateCities(this.value);
+});
