@@ -6,6 +6,10 @@ var population = [];
 var fitness = [];
 var order = [];
 
+var initialOrder = [];
+
+var mutationrate = 0.01;
+
 var recordDistance = Infinity;
 var bestEver;
 var currentBest;
@@ -22,6 +26,16 @@ function setup() {
   citySlider = document.getElementById("citySlider");
   cityLabel = document.getElementById("cityLabel");
   totalCities = citySlider.value;
+  popSlider = document.getElementById("popSlider");
+  popLabel = document.getElementById("popLabel");
+  popSize = popSlider.value;
+
+  mutationSlider = document.getElementById("mutationSlider");
+  mutationLabel = document.getElementById("mutationLabel");
+  mutationrate = mutationSlider.value/100;
+
+
+  
   // create random cities array
   for (var i = 0; i < totalCities; i++) {
     var point = createVector(random(width), random(height / 2));
@@ -93,32 +107,14 @@ function calcDistance(points, order) {
   }
   return sum;
 }
-function updateCities(value) {
-  noLoop();
-  cityLabel.innerText = "Number of cities: " + value;
-  totalCities = parseInt(value);
 
-  // Reset the cities, order, and population arrays and start over
-  cities = [];
-  order = [];
-  population = [];
-  recordDistance = Infinity;
-
-  for (var i = 0; i < totalCities; i++) {
-      var point = createVector(random(width), random(height / 2));
-      cities[i] = point;
-      order[i] = i;
-  }
-
-  for (var i = 0; i < popSize; i++) {
-      population[i] = shuffle(order);
-  }
-
-  // Optionally, reset the loop if you've stopped it earlier
-  // setup();
-  // redraw();
-  loop();
-}
 document.getElementById('citySlider').addEventListener('change', function() {
   updateCities(this.value);
+});
+document.getElementById('popSlider').addEventListener('change', function() {
+  updatePop(this.value);
+});
+
+document.getElementById('mutationSlider').addEventListener('change', function() {
+  updateMutation(this.value);
 });

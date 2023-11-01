@@ -2,13 +2,22 @@
 <head>
   <meta charset="UTF-8">
   <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" src="ui.js"></script>
   <script language="javascript" src="GA.js"></script>
     <script language="javascript" type="text/javascript" src="sketch.js"></script>
+    
 </head>
 
 <body>
   <input type="range" id="citySlider" min="3" max="30" value="3" oninput="updateCities(this.value)">
 <label id="cityLabel">Number of cities: </label>
+
+<input type="range" id="popSlider" min="10" max="1000" value="100" oninput="updatePop(this.value)">
+<label id="popLabel">Population Size : </label>
+
+<input type="range" id="mutationSlider" min="0" max="100" value="1" oninput="updateMutation(this.value)">
+<label id="mutationLabel">Mutation % : </label>
+
 
 
     

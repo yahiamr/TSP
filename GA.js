@@ -31,7 +31,7 @@ function calculateFitness() {
       var orderA = pickOne(population, fitness);
       var orderB = pickOne(population, fitness);
       var order = crossOver(orderA, orderB);
-      mutate(order, 0.05);
+      mutate(order, mutationrate);
       newPopulation[i] = order;
     }
     population = newPopulation;
@@ -41,7 +41,7 @@ function calculateFitness() {
     var index = 0;
     var r = random(1);
   
-    while (r > 0) {
+    while (r > 0 && index < list.length - 1) {
       r = r - prob[index];
       index++;
     }
@@ -63,10 +63,10 @@ function calculateFitness() {
   }
   
   function mutate(order, mutationRate) {
-    for (var i = 0; i < totalCities; i++) {
+    for (var i = 0; i < order.length; i++) {
       if (random(1) < mutationRate) {
         var indexA = floor(random(order.length));
-        var indexB = (indexA + 1) % totalCities;
+        var indexB = (indexA + 1) % order.length;
         swap(order, indexA, indexB);
       }
     }
