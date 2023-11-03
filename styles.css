@@ -1,0 +1,36 @@
+body {
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark grey text */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .controls {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .control-item {
+    margin-bottom: 10px; /* Spacing between control items */
+  }
+  
+  input[type="range"] {
+    -webkit-appearance: none; /* Override default appearance */
+    width: 100%; /* Full width */
+    margin: 10px 0; /* Margin for spacing */
+  }
+  
+  input[type="range"]:focus {
+    outline: none; /* Remove the outline when focused */
+  }
+  
+  .control-label {
+    display: block; /* Labels are block level to influence width */
+  }
+  
+  .slider-value {
+    display: inline-block; /* Keep the value next to the label */
+    width: 50px; /* Fixed width for the value */
+    text-align: right; /* Right align the text */
+    margin-left: 10px; /* Spacing between the label and the value */
+  }
+  

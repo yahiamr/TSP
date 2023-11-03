@@ -49,24 +49,3 @@ function updatePop(value){
         population[i] = shuffle(order);
     }
 }
-
-//   function update(){
-//     // Reset the cities, order, and population arrays and start over
-//     cities = [];
-//     order = [];
-//     population = [];
-//     fitness = [];
-//     recordDistance = Infinity;
-    
-//     for (var i = 0; i < totalCities; i++) {
-//         var point = createVector(random(width-20), random((height / 2)-20));
-//         cities[i] = point;
-//         order[i] = i;
-//     }
-    
-//     for (var i = 0; i < popSize; i++) {
-//         population[i] = shuffle(order);
-//     }
-//     }
-
-    
