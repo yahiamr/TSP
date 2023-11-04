@@ -1,3 +1,8 @@
+function replot(){
+  loop();
+
+  noLoop();
+}
 
 function updatePop(value){
     noLoop();
@@ -5,7 +10,9 @@ function updatePop(value){
     popSize = parseInt(value);
 
     update(false);
-    loop();
+    replot();
+    
+   // loop();
   }
 
 
@@ -15,7 +22,8 @@ function updatePop(value){
     mutationrate = parseInt(value)/100;
     
     update(false);
-    loop();
+    replot();
+    //loop();
   }
   
 
@@ -26,7 +34,8 @@ function updatePop(value){
     totalCities = parseInt(value);
 
     update(true);
-    loop();
+    replot();
+    //loop();
   }
   
   function update(regenerateCities){
@@ -48,4 +57,10 @@ function updatePop(value){
     for (var i = 0; i < popSize; i++) {
         population[i] = shuffle(order);
     }
+}
+
+function startSolvingTSP() {
+  console.log('Starting the TSP solving process...');
+  // Here you would start the algorithm or whatever process you have to solve the TSP
+  loop(); 
 }

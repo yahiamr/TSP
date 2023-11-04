@@ -1,34 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TSP Visualizer</title>
   <link rel="stylesheet" href="styles.css">
   <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
   <script language="javascript" src="ui.js"></script>
   <script language="javascript" src="GA.js"></script>
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
 </head>
+
 <body>
-  <div class="controls">
+  <div class="sidebar">
     <div class="control-item">
+      <label id="cityLabel" class="control-label">Number of cities:</label>
       <input type="range" id="citySlider" min="3" max="30" value="3" oninput="updateCities(this.value)">
-      <label for="citySlider" class="control-label" id="cityLabel">Number of cities: </label>
-      <span class="slider-value" id="cityValue">3</span>
     </div>
-
     <div class="control-item">
+      <label id="popLabel" class="control-label">Population Size:</label>
       <input type="range" id="popSlider" min="10" max="1000" value="100" oninput="updatePop(this.value)">
-      <label for="popSlider" class="control-label" id="popLabel">Population Size: </label>
-      <span class="slider-value" id="popValue">100</span>
     </div>
-
     <div class="control-item">
+      <label id="mutationLabel" class="control-label">Mutation %:</label>
       <input type="range" id="mutationSlider" min="0" max="100" value="1" oninput="updateMutation(this.value)">
-      <label for="mutationSlider" class="control-label" id="mutationLabel">Mutation %: </label>
-      <span class="slider-value" id="mutationValue">1</span>
     </div>
+    <div class="control-item">
+      <button id="startButton">Start Solving TSP</button>
+    </div>
+  </div>
+  <div class="canvas-container">
+    <!-- The canvas tag for p5.js will go here -->
   </div>
 </body>
 </html>

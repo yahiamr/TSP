@@ -45,6 +45,7 @@ function setup() {
   for (var i = 0; i < popSize; i++) {
     population[i] = shuffle(order);
   }
+  noLoop();
 }
 
 function draw() {
@@ -108,13 +109,19 @@ function calcDistance(points, order) {
   return sum;
 }
 
-document.getElementById('citySlider').addEventListener('change', function() {
-  updateCities(this.value);
-});
-document.getElementById('popSlider').addEventListener('change', function() {
-  updatePop(this.value);
-});
 
-document.getElementById('mutationSlider').addEventListener('change', function() {
-  updateMutation(this.value);
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Ensures the DOM is fully loaded before trying to attach the event listener
+  document.getElementById('startButton').addEventListener('click', startSolvingTSP);
+  document.getElementById('citySlider').addEventListener('change', function() {
+    updateCities(this.value);
+  });
+  document.getElementById('popSlider').addEventListener('change', function() {
+    updatePop(this.value);
+  });
+  
+  document.getElementById('mutationSlider').addEventListener('change', function() {
+    updateMutation(this.value);
+  });
 });
