@@ -19,7 +19,17 @@ let canvas;
 
 function setup() {
   if (!canvas) {
-    canvas = createCanvas(1400, 1400);
+    let aspectRatio = 16 / 9;
+    let canvasHeight = windowHeight;
+    let canvasWidth = canvasHeight * aspectRatio;
+  
+    // Check if the calculated width is too wide for the window
+    if (canvasWidth > windowWidth) {
+      canvasWidth = windowWidth;
+      canvasHeight = canvasWidth / aspectRatio;
+    }
+  
+    canvas = createCanvas(canvasWidth, canvasHeight);
   } else {
     canvas.remove();
   }
